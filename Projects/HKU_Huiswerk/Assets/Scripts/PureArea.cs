@@ -4,12 +4,16 @@ using UnityEngine;
 
 public class PureArea : MonoBehaviour { 
 	public Camera player;
-	public AudioSource audiosrc;
-	// Use this for initialization
-	public Color color1 = Color.red;
-    public Color color2 = Color.blue;
+	public AudioSource PureAudiosrc;
+	public AudioSource EvilAudiosrc;
 
-	bool startTrip;
+	// Use this for initialization
+	public Color colorEvil = Color.red;
+    public Color colorPure = Color.blue;
+	public Color colorBackground = Color.grey;
+
+	bool startEvil;
+	bool startPure;
 	
 	void Start()
     {
@@ -19,22 +23,28 @@ public class PureArea : MonoBehaviour {
 
     void Update()
     {
-		if(startTrip == true){
-        	player.backgroundColor = color1;
+		if(startPure == true){
+        	player.backgroundColor = colorPure;
 		} else {
-			player.backgroundColor = color2;
+			player.backgroundColor = colorBackground;
+		}
+
+		if(startEvil == true){
+        	player.backgroundColor = colorEvil;
+		} else {
+			player.backgroundColor = colorBackground;
 		}
     }
 
-	private void OnTriggerEnter(){
+	void OnTriggerEnter(){
 		Debug.Log("Change background color to bright blue");
-		audiosrc.Play();
-		startTrip = true;
+		PureAudiosrc.Play();
+		startPure = true;
 	}
 
-	private void OnTriggerExit(){
+	void OnTriggerExit(){
 		Debug.Log("Change back background color");
-		audiosrc.Stop();
-		startTrip = false;
+		PureAudiosrc.Stop();
+		startPure = false;
 	}
 }

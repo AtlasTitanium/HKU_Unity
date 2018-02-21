@@ -38,4 +38,6 @@ public class EvilArea : MonoBehaviour {
 		audiosrc.Stop();
 		startTrip = false;
 	}
+
+	
 }
