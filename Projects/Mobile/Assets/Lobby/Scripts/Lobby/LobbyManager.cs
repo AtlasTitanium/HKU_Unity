@@ -354,7 +354,7 @@ namespace Prototype.NetworkLobby
         {
             float remainingTime = prematchCountdown;
             int floorTime = Mathf.FloorToInt(remainingTime);
-
+            
             while (remainingTime > 0)
             {
                 yield return null;

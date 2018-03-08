@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using System.Collections;
 
 namespace Prototype.NetworkLobby
@@ -11,6 +11,7 @@ namespace Prototype.NetworkLobby
 
         public GameObject button;
 
+        public GameObject closebutton;
         protected bool isDisplayed = true;
         protected Image panelImage;
 
@@ -20,24 +21,24 @@ namespace Prototype.NetworkLobby
         void Start()
         {
             panelImage = GetComponent<Image>();
-            Button btn = button.GetComponent<Button>();
-            btn.onClick.AddListener(TaskOnClick);
+            Button bton = closebutton.GetComponent<Button>();
+            bton.onClick.AddListener(TaskOnClick);
         }
 
         void Update()
         {
-            if(tag == false){
-                if(button == null){
-                    button = GameObject.FindWithTag("Settings");
-                } else {
-                    Button btn = button.GetComponent<Button>();
-                    btn.onClick.AddListener(TaskOnClick);
-                    tag = true;
-                }
+            if(button == null){
+                Debug.Log("NOBUTTON");
+                GameObject button = GameObject.FindGameObjectWithTag("Settings");
+            } else {
+                Debug.Log("ABUTON");
+                Button btn = button.GetComponent<Button>();
+                btn.onClick.AddListener(TaskOnClick);
             }
 
-            if (!isInGame)
-                return;
+            if (!isInGame){
+                Debug.Log("IMINGAME");
+            }
 
             if (Input.GetKeyDown(KeyCode.Escape))
             {
@@ -45,6 +46,7 @@ namespace Prototype.NetworkLobby
             }
 
         }
+ 
         void TaskOnClick(){
             ToggleVisibility(!isDisplayed);
             Debug.Log("YOUCLICKEDYAY");

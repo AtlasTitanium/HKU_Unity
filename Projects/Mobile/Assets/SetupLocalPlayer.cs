@@ -10,25 +10,24 @@ public class SetupLocalPlayer : NetworkBehaviour {
 
 	private Text topname;
 
-	private bool tag;
+	private bool tag = true;
+
 
 	[SyncVar]
 	public Color playerColor = Color.white;
 
-	[Command]
-	public void CmdChangeName(string newName){
-		pname = newName;
-		this.GetComponentInChildren<TextMesh>().text = pname;
-	}
-	// Use this for initialization
-	void Start () {
-		if(isLocalPlayer){
-			this.GetComponent<SpriteRenderer>().color = playerColor;
-		}
-		this.transform.position = new Vector2(Random.Range(-20,20),Random.Range(-20,20));
-	}
+	void Awake() {
+        DontDestroyOnLoad(transform.gameObject);
+    }
 	
-	// Update is called once per frame
+	void Start () {
+		if (isLocalPlayer){
+			GetComponent<SpriteRenderer>().enabled = false;
+			GetComponentInChildren<Camera>().clearFlags = CameraClearFlags.SolidColor;
+			GetComponentInChildren<Camera>().backgroundColor = playerColor;
+		}
+		this.transform.position = new Vector2(0,0);
+	}
 	void Update () {
 		if(tag == false){
                 if(topname == null){
@@ -39,4 +38,8 @@ public class SetupLocalPlayer : NetworkBehaviour {
                 }
             }
 	}
+	public override void OnStartLocalPlayer()
+    {
+        tag = false;
+    }
 }

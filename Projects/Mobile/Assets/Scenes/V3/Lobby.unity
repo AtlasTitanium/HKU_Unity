@@ -701,7 +701,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerListContentTransform: {fileID: 167799476}
-  warningDirectPlayServer: {fileID: 0}
+  warningDirectPlayServer: {fileID: 1367772759}
   addButtonRow: {fileID: 1142692792}
 --- !u!114 &227517479
 MonoBehaviour:
@@ -4809,7 +4809,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 599, y: -45}
+  m_AnchoredPosition: {x: 525, y: -48.8}
   m_SizeDelta: {x: 176, y: 52}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &1537865443
@@ -5825,6 +5825,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isInGame: 0
   button: {fileID: 0}
+  buttons: []
 --- !u!114 &2068995956
 MonoBehaviour:
   m_ObjectHideFlags: 0
