@@ -19,7 +19,7 @@ namespace Prototype.NetworkLobby
         public InputField nameInput;
         public Button readyButton;
         public Button waitingPlayerButton;
-        public Button removePlayerButton;
+
 
         public GameObject localIcone;
         public GameObject remoteIcone;
@@ -89,7 +89,6 @@ namespace Prototype.NetworkLobby
         void SetupOtherPlayer()
         {
             nameInput.interactable = false;
-            removePlayerButton.interactable = NetworkServer.active;
 
             ChangeReadyButtonColor(NotReadyColor);
 
@@ -147,7 +146,6 @@ namespace Prototype.NetworkLobby
             foreach (PlayerController p in ClientScene.localPlayers)
                 localPlayerCount += (p == null || p.playerControllerId == -1) ? 0 : 1;
 
-            removePlayerButton.interactable = localPlayerCount > 1;
         }
 
         public override void OnClientReady(bool readyState)

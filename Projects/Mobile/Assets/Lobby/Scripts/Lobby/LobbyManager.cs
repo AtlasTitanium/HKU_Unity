@@ -26,8 +26,6 @@ namespace Prototype.NetworkLobby
 
         public RectTransform mainMenuPanel;
         public RectTransform lobbyPanel;
-
-        public LobbyInfoPanel infoPanel;
         public LobbyCountdownPanel countdownPanel;
         public GameObject addPlayerButton;
 
@@ -143,12 +141,6 @@ namespace Prototype.NetworkLobby
             }
         }
 
-        public void DisplayIsConnecting()
-        {
-            var _this = this;
-            infoPanel.Display("Connecting...", "Cancel", () => { _this.backDelegate(); });
-        }
-
         public void SetServerInfo(string status, string host)
         {
             statusInfo.text = status;
@@ -226,7 +218,6 @@ namespace Prototype.NetworkLobby
 
         public void KickedMessageHandler(NetworkMessage netMsg)
         {
-            infoPanel.Display("Kicked by Server", "Close", null);
             netMsg.conn.Disconnect();
         }
 
@@ -393,8 +384,6 @@ namespace Prototype.NetworkLobby
         {
             base.OnClientConnect(conn);
 
-            infoPanel.gameObject.SetActive(false);
-
             conn.RegisterHandler(MsgKicked, KickedMessageHandler);
 
             if (!NetworkServer.active)
@@ -415,7 +404,6 @@ namespace Prototype.NetworkLobby
         public override void OnClientError(NetworkConnection conn, int errorCode)
         {
             ChangeTo(mainMenuPanel);
-            infoPanel.Display("Cient error : " + (errorCode == 6 ? "timeout" : errorCode.ToString()), "Close", null);
         }
     }
 }

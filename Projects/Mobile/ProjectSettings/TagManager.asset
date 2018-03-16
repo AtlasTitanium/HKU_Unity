@@ -6,6 +6,13 @@ TagManager:
   tags:
   - Settings
   - TopName
+  - Player1Vote
+  - Player2Vote
+  - Player3Vote
+  - Player4Vote
+  - Player6Vote
+  - Player5Vote
+  - Invullen
   layers:
   - Default
   - TransparentFX

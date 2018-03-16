@@ -32,7 +32,6 @@ namespace Prototype.NetworkLobby
 			lobbyManager.matchMaker.JoinMatch(networkID, "", "", "", 0, 0, lobbyManager.OnMatchJoined);
 			lobbyManager.backDelegate = lobbyManager.StopClientClbk;
             lobbyManager._isMatchmaking = true;
-            lobbyManager.DisplayIsConnecting();
         }
     }
 }

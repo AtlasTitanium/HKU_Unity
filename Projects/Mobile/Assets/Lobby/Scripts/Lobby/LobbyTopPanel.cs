@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
+using UnityEngine.Networking;
 using System.Collections;
 
 namespace Prototype.NetworkLobby
@@ -9,35 +9,39 @@ namespace Prototype.NetworkLobby
     {
         public bool isInGame = false;
 
-        public GameObject button;
+        private GameObject button;
 
-        public GameObject closebutton;
         protected bool isDisplayed = true;
         protected Image panelImage;
 
-        private bool tag = false;
+        private bool TopPanelBool = false;
 
 
         void Start()
         {
             panelImage = GetComponent<Image>();
-            Button bton = closebutton.GetComponent<Button>();
-            bton.onClick.AddListener(TaskOnClick);
         }
 
         void Update()
         {
-            if(button == null){
-                Debug.Log("NOBUTTON");
-                GameObject button = GameObject.FindGameObjectWithTag("Settings");
-            } else {
-                Debug.Log("ABUTON");
-                Button btn = button.GetComponent<Button>();
-                btn.onClick.AddListener(TaskOnClick);
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                ToggleVisibility(!isDisplayed);
+            }
+
+            if(TopPanelBool == true){
+                if(button == null){
+                    button = GameObject.FindGameObjectWithTag ("Settings");
+                } else {
+                    Button btn = button.GetComponent<Button>();
+                    btn.onClick.AddListener(TaskOnClick);
+                    TopPanelBool = false;
+                }
             }
 
             if (!isInGame){
-                Debug.Log("IMINGAME");
+                TopPanelBool = true;
+                return;
             }
 
             if (Input.GetKeyDown(KeyCode.Escape))
@@ -46,10 +50,8 @@ namespace Prototype.NetworkLobby
             }
 
         }
- 
         void TaskOnClick(){
             ToggleVisibility(!isDisplayed);
-            Debug.Log("YOUCLICKEDYAY");
             Debug.Log(isDisplayed);
         }
 

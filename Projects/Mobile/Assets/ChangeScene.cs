@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class ChangeScene : MonoBehaviour {
 
 	public void OtherScene() {
-		SceneManager.LoadScene("MainExtra", LoadSceneMode.Additive);
+		SceneManager.LoadScene("VotingRound", LoadSceneMode.Additive);
 	}
 	
 }

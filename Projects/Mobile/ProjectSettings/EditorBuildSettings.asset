@@ -6,6 +6,18 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/V3/TutorialScene.unity
+    guid: f91d1cefceecb7340ad1448746c295a9
+  - enabled: 1
+    path: Assets/Scenes/V3/FillRound.unity
+    guid: c1f8a01eb6db3ed4c8db37493770f0ec
+  - enabled: 1
+    path: Assets/Scenes/V3/VotingRound.unity
+    guid: 838b3610a674e50439286894371f9c91
+  - enabled: 1
+    path: Assets/Scenes/V3/ScoreScene.unity
+    guid: dd95f98d678350348b6b1b8301b5c6a9
+  - enabled: 1
     path: Assets/Scenes/V3/NewLobbyTest.unity
     guid: 06d07dc3609f24546a1feb4d58c17082
   - enabled: 1
