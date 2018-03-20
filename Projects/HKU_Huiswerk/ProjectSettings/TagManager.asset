@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Evil
   - Wall
+  - PickupObject
   layers:
   - Default
   - TransparentFX
@@ -19,8 +20,8 @@ TagManager:
   - Invisible
   - Pickups
   - visible
-  - 
-  - 
+  - Camera
+  - Player
   - 
   - 
   - 
