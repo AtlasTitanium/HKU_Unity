@@ -23,6 +23,8 @@ public class MoveAwayFromPlayer : MonoBehaviour {
 
 	 private bool TAGO = true;
 
+	 public GameObject nextGhost;
+
 	void Start(){
 		thisScript = this;
 		origin.position = new Vector3(transform.position.x,transform.position.y,transform.position.z);
@@ -31,7 +33,7 @@ public class MoveAwayFromPlayer : MonoBehaviour {
      void Update()
      {
 		if(TAGO){
-			Debug.Log(GhostisWhining);
+			//Debug.Log(GhostisWhining);
 			if(GhostisWhining){
 				Hover();
 				range = Vector3.Distance(transform.position, target.position);
@@ -48,7 +50,7 @@ public class MoveAwayFromPlayer : MonoBehaviour {
 
 				newyposition = transform.position.y;
 			} else {
-				Debug.Log("Ghost should change");
+				//Debug.Log("Ghost should change");
 			}
 		}
     }
@@ -76,6 +78,9 @@ public class MoveAwayFromPlayer : MonoBehaviour {
 		GhostisWhining = false;
 		gameObject.GetComponent<Renderer>().material = lovelymaterial;
 		gameObject.layer = 0;
+		nextGhost.layer = 10;
+		nextGhost.tag = "PickupObject";
+		nextGhost.SetActive(true);
 	}
 
 	public void Objecthasbeenpickedup(){

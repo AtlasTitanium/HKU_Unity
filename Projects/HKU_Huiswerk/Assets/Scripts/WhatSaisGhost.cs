@@ -46,7 +46,7 @@ public class WhatSaisGhost : MonoBehaviour {
 				}
 				if(transparensy > 0.9f){changetransperancy = true;}
 				gameObject.transform.position = new Vector3(xposition,yposition,originzposition);
-				rend.color = new Color(0,0,0,transparensy);
+				rend.color = new Color(50,50,50,transparensy);
 				if(transparensy < 0f){
 					isactive = false;
 				}
@@ -64,6 +64,7 @@ public class WhatSaisGhost : MonoBehaviour {
 			transform.LookAt(target);
 		} else {
 			if(isactive){
+				gameObject.layer = 0;
 				TheText.text = "Thank You!";
 				xposition += speed;
 				yposition += speed/2;
@@ -74,7 +75,7 @@ public class WhatSaisGhost : MonoBehaviour {
 				}
 				if(transparensy > 0.9f){changetransperancy = true;}
 				gameObject.transform.position = new Vector3(xposition,yposition,originzposition);
-				rend.color = new Color(0,0,0,transparensy);
+				rend.color = new Color(255,255,255,transparensy);
 				if(transparensy < 0f){
 					isactive = false;
 				}
@@ -101,7 +102,7 @@ public class WhatSaisGhost : MonoBehaviour {
 
 	IEnumerator WaitThisLong1(int timewasted){
         yield return new WaitForSeconds(timewasted);
-		Destroy(gameObject);
+		gameObject.SetActive(false);
 	}
 
 	public void GhostGoesAway(){
