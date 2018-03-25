@@ -5,12 +5,15 @@ using UnityEngine;
 public class PlayerGhostInteraction : MonoBehaviour {
 	public GameObject TheGhost;
 	public GameObject TheGhostwords;
+	public GameObject TheGhostarea;
 	private WhatSaisGhost TheGhostwordsscript;
 	public GameObject PickupObject;
 	public GameObject ThePlayer;
 	private PickupPickup ThePlayerScript;
 
 	public bool gotobject = false;
+
+	public int ghostid;
 
 	// Use this for initialization
 	void Start () {
@@ -22,8 +25,9 @@ public class PlayerGhostInteraction : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		for(int i = 0; i < ThePlayerScript.Inventory.Length; i++){
-			if(ThePlayerScript.Inventory[i] == PickupObject){
+		Debug.Log(gotobject);
+		//Debug.Log(PickupObjects[i]);
+			if(ThePlayerScript.Inventory == PickupObject){
 				gotobject = true;
 				TheGhost.GetComponent<MoveAwayFromPlayer>().Hover();
 				TheGhost.GetComponent<MoveAwayFromPlayer>().Objecthasbeenpickedup();
@@ -34,12 +38,17 @@ public class PlayerGhostInteraction : MonoBehaviour {
 				TheGhostwords.GetComponent<WhatSaisGhost>().enabled = true;
 				//Debug.Log("Player doesn't have the object");
 			}
-		}
 	}
 
 	public void RemoveGhost(){
 		TheGhostwordsscript.TheText.text = "";
+		TheGhostarea.transform.localScale = new Vector3(2,2,2);
 		TheGhost.GetComponent<MoveAwayFromPlayer>().GhostGoesAway();
 		TheGhostwords.GetComponent<WhatSaisGhost>().GhostGoesAway();
+		ThePlayer.GetComponent<PickupPickup>().NewGhost();
+	}
+
+	public void NoMoreAnrgyGhosts(){
+		Debug.Log("YAY!!!! You WON");
 	}
 }
