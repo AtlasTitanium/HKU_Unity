@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class MoveAwayFromPlayer : MonoBehaviour {
+	public Transform[] Ghostmaterials;
 	 public static MoveAwayFromPlayer thisScript;
 	
 	public Material lovelymaterial;
@@ -30,6 +31,10 @@ public class MoveAwayFromPlayer : MonoBehaviour {
 	}
      void Update()
      {
+		Ghostmaterials[0] = transform.GetChild(2).transform.GetChild(0);
+		Ghostmaterials[1] = transform.GetChild(2).transform.GetChild(1);
+		Ghostmaterials[2] = transform.GetChild(2).transform.GetChild(2);
+		Ghostmaterials[3] = transform.GetChild(2).transform.GetChild(3);
 		if(TAGO){
 			Debug.Log(GhostisWhining);
 			if(GhostisWhining){
@@ -50,6 +55,8 @@ public class MoveAwayFromPlayer : MonoBehaviour {
 			} else {
 				Debug.Log("Ghost should change");
 			}
+		} else{ 
+			Debug.Log("Ghost should not run away");
 		}
     }
 
@@ -74,8 +81,10 @@ public class MoveAwayFromPlayer : MonoBehaviour {
 	public void GhostGoesAway(){
 		TAGO = true;
 		GhostisWhining = false;
-		gameObject.GetComponent<Renderer>().material = lovelymaterial;
-		gameObject.layer = 0;
+		for(int i = 0; i < Ghostmaterials.Length; i++){
+			Ghostmaterials[i].gameObject.GetComponent<Renderer>().material = lovelymaterial;
+			Ghostmaterials[i].gameObject.layer = 0;
+		}
 	}
 
 	public void Objecthasbeenpickedup(){
